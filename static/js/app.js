@@ -3,10 +3,10 @@ var filteredData = data;
 
 // Get references to the tbody element, input fields and buttons
 var tbody = d3.select("#body");
-var datetime = d3.select("#datetime");
-var city = d3.select("#city");
-var state = d3.select("#state");
-var shape = d3.select("#shape");
+//var datetime = d3.select("#datetime");
+//var city = d3.select("#city");
+//var state = d3.select("#state");
+//var shape = d3.select("#shape");
 
 
 // Filter the table for date #################################
@@ -30,7 +30,7 @@ filter.on("click", function() {
 			return xfileDate === filterDate;
 		});
 	};
-	renderTable();
+	showTable();
 });
 // Filter the table for date #################################
 
@@ -55,7 +55,7 @@ filter.on("click", function() {
 			return xfileCity === filterCity;
 		});
 	};
-	renderTable();
+	showTable();
 });
 // Filter the table for city #################################
 
@@ -81,7 +81,7 @@ filter.on("click", function() {
 			return xfileState === filterState;
 		});
 	};
-	renderTable();
+	showTable();
 });
 // Filter the table for state #################################
 
@@ -102,17 +102,17 @@ filter.on("click", function() {
 	var filterShape = inputValueShape;
 	if (filterShape != "") {
 		filteredData = filteredData.filter(function (xfile) {
-			var xfileShape = xfile.Shape;
+			var xfileShape = xfile.shape;
 			return xfileShape === filterShape;
 		});
 	};
-	renderTable();
+	showTable();
 });
 // Filter the table for shape #################################
 
 
-// renderTable renders the filtered data to the tbody
-function renderTable() {
+// showTable renders the filtered data to the tbody
+function showTable() {
 	tbody.innerHTML = "";
 	for (var i = 0; i < filteredData.length; i++) {
 		// Get get the current xfile object and its fields
@@ -138,9 +138,9 @@ reset.on("click", function() {
 	city.value = "";
 	state.value = "";
 	shape.value = "";
-	renderTable();
+	showTable();
 });
 
 // Render the table for the first time on page load
-// renderTable();
+// showTable();
 
